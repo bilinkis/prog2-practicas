@@ -1,4 +1,4 @@
-let autos = require('../../../practica-modulos/pruebaNPM/autos');
+let autos = require('../autos');
 let result = [];
 let controller = {
     index: function (){
