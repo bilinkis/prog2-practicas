@@ -1,81 +1,31 @@
 const express = require('express');
 const router = express.Router();
 let autos = require('../../../practica-modulos/pruebaNPM/autos');
+let controller = require('../controllers/productControllers');
 var result = [];
 router.get('/', function (req, res) {
-    res.send(autos.list);
+    res.send(controller.index());
 
 });
 
 
 router.get('/marca/:marca', function (req, res) {
     let marca = req.params.marca;
-    for (let i = 0; i < autos.list.length; i++) {
-        if (autos.list[i].marca == marca) {
-            result.push(autos.list[i]);
-        }
-    }
-    if (result.length > 0) {
-        res.send(result);
-    } else {
-        res.send('no se encontraron resultados');
-    }
+    res.send(controller.marca(marca));
 });
 router.get('/color/:color', function (req, res) {
     let color = req.params.color;
-    for (let i = 0; i < autos.list.length; i++) {
-        if (autos.list[i].color == color) {
-            result.push(autos.list[i]);
-        }
-    }
-    if (result.length > 0) {
-        res.send(result);
-    } else {
-        res.send('no se encontraron resultados');
-    }
+    res.send(controller.color(color));
 
 
 });
 router.get('/model/:model/:year?', function (req, res) {
     
-    if (! req.params.year) {
-        let model = req.params.model;
-        for (let i = 0; i < autos.list.length; i++) {
-            if (autos.list[i].modelo == model) {
-                result.push(autos.list[i]);
-            }
-        }
-    } else {
-        let model = req.params.model;
-        for (let i = 0; i < autos.list.length; i++) {
-            if (autos.list[i].modelo == model) {
-                result.push(autos.list[i]);
-            }
-        }
-            for (let i = 0; i < result.length; i++) {
-                if (result[i].year<req.params.year){
-                result.splice(i,1);
-            }
-        }
-    }
-    if (result.length > 0) {
-        res.send(result);
-    } else {
-        res.send('no se encontraron resultados');
-    }
+    res.send(controller.modelYear(req.params.model,req.params.year));
         });
         router.get('/year/:year', function (req, res) {
             let year = req.params.year;
-            for (let i = 0; i < autos.list.length; i++) {
-                if (autos.list[i].year >= year) {
-                    result.push(autos.list[i]);
-                }
-            }
-            if (result.length > 0) {
-                res.send(result);
-            } else {
-                res.send('no se encontraron resultados');
-            }
+            res.send(controller.year(year));
         });
 
         module.exports = router;
