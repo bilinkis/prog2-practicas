@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+<%- include('./partials/header.ejs') %> 
+<% console.log(band); %> 
+<%  if(band = []){ %>
+  <h1>No se encontraron resultados</h1>
+<% } else{%> 
+
+<% for(let i = 0;i<band.length;i++){ %>
+  <article>
+   <a href="/bands/id/<%= band[i].id - 1%>"><h1> <%= band[i].nombre %> </h1></a>
+   <h1> <%= band[i].genero %> </h1>
+   <img src="<%= band[i].cover %>" alt="" width="10%" height="auto">
+  </article>
+  
+    <% }} %>
+<%- include('./partials/footer.ejs') %> 
+  </body>
+</html>

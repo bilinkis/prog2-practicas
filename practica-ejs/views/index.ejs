@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+<%- include('./partials/header.ejs') %> 
+<div style="text-align: center;">
+<%  for(let i=0;i<bands.lista.length;i++){ %>
+
+<% console.log(bands.lista[i]); %>
+  <article>
+   <a href="bands/id/<%= bands.lista[i].id - 1%>"><h1> <%= bands.lista[i].nombre %> </h1></a>
+   <h1> <%= bands.lista[i].genero %> </h1>
+   <img src="<%= bands.lista[i].cover %>" alt="" width="10%" height="auto">
+  </article>
+  
+    <% } %>
+  </div>
+<%- include('./partials/footer.ejs') %> 
+  </body>
+</html>

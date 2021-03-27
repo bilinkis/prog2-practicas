@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+<%- include('./partials/header.ejs') %> 
+<div style="text-align: center;">
+<%console.log(band); %>
+<%  if(band == "empty"){ %>
+  <h1>No se encontraron resultados</h1>
+<% } else{%> 
+
+<% console.log(band); %>
+  <article>
+   <h1>El nombre de la banda es: <%= band.nombre %> </h1>
+   <h1> El genero de la banda es:<a href="/bands/genre/<%= band.genero %>"><%= band.genero %> </h1></a>
+   <h1>Cantidad de integrantes: <%= band.integrantes %> </h1>
+   <h1>Las mejores canciones son:<%= band.topCanciones %></h1>
+   <img src="<%= band.cover %>" alt="" width="10%" height="auto">
+  </article>
+  
+    <% } %>
+</div>
+<%- include('./partials/footer.ejs') %> 
+  </body>
+</html>
