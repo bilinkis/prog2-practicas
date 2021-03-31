@@ -17,7 +17,12 @@
    <h1>El nombre de la banda es: <%= band.nombre %> </h1>
    <h1> El genero de la banda es:<a href="/bands/genre/<%= band.genero %>"><%= band.genero %> </h1></a>
    <h1>Cantidad de integrantes: <%= band.integrantes %> </h1>
-   <h1>Las mejores canciones son:<%= band.topCanciones %></h1>
+   <h1>Las mejores canciones son:</h1>
+   <ul>
+    <% for(let i = 0; i <band.topCanciones.length; i++){ %>
+      <li><%= band.topCanciones[i] %> </li>
+   <% }  %>
+   </ul>
    <img src="<%= band.cover %>" alt="" width="10%" height="auto">
   </article>
   
